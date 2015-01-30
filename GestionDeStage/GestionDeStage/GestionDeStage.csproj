@@ -1,0 +1,201 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{8FFC12DF-D9AC-484C-8765-BA24C9721B3A}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>GestionDeStage</RootNamespace>
+    <AssemblyName>GestionDeStage</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Oracle.DataAccess, Version=4.121.1.0, Culture=neutral, PublicKeyToken=89b483f429c47342, processorArchitecture=x86" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AjoutModifStage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AjoutModifStage.Designer.cs">
+      <DependentUpon>AjoutModifStage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormErreur.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormErreur.Designer.cs">
+      <DependentUpon>FormErreur.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormPrincipale.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormPrincipale.Designer.cs">
+      <DependentUpon>FormPrincipale.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="AjoutModifStage.resx">
+      <DependentUpon>AjoutModifStage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormErreur.resx">
+      <DependentUpon>FormErreur.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormPrincipale.resx">
+      <DependentUpon>FormPrincipale.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\FlashButton\FlashButton.csproj">
+      <Project>{40C1D7BC-D569-43AF-8C32-B0612D862F58}</Project>
+      <Name>FlashButton</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\CloseClick.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\CloseDisable.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\CloseHover.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\CloseNormal.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\AnnulerClick.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\AnnulerDisable.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\AnnulerHover.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\AnnulerNormal.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\AppliquerClick.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\AppliquerDisable.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\AppliquerHover.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\AppliquerNormal.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\SupprimerClick.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\SupprimerDisable.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\SupprimerHover.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\SupprimerNormal.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\AjouterClick.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\AjouterDisable.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\AjouterHover.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\AjouterNormal.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\error.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FermerClick.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FermerDisable.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FermerHover.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FermerNormal.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ContinuerClick.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ContinuerDisable.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ContinuerHover.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ContinuerNormal.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
