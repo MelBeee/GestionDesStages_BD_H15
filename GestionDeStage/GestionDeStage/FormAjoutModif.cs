@@ -19,10 +19,12 @@ namespace GestionDeStage
       private Point _start_point = new Point(0, 0);
       string AjouterModifier;
       OracleConnection oraconn_AM = new OracleConnection();
+      int NumStagePK;
 
-      public FormAjoutModif(string AjoutModif, OracleConnection oraconn)
+      public FormAjoutModif(string AjoutModif, OracleConnection oraconn, int NumStage)
       {
-         oraconn_AM = oraconn; 
+         oraconn_AM = oraconn;
+         NumStagePK = NumStage;
          AjouterModifier = AjoutModif; 
          InitializeComponent();
       }
@@ -62,6 +64,50 @@ namespace GestionDeStage
 
          if (Erreur.ShowDialog() == DialogResult.Cancel)
             this.Close();
+      }
+
+      private void FormAjoutModif_Load(object sender, EventArgs e)
+      {
+         LB_AjoutModif.Text = AjouterModifier;
+         if(AjouterModifier == "Modifier")
+         {
+            RemplirInformation();
+         }
+      }
+
+      private void RemplirInformation()
+      {
+
+      }
+
+      private void LoadInformation()
+      {
+         string commandesql = "select e.*, d.nom from equipes e " +
+                       "inner join divisions d on d.numdivision = e.numdivision " +
+                       "where numequipe = " ;
+         try
+         {
+            OracleCommand orcd = new OracleCommand(commandesql, oraconnGestion);
+            orcd.CommandType = CommandType.Text;
+            OracleDataReader oraRead = orcd.ExecuteReader();
+
+            oraRead.Read();
+            TB_NomEquipe.Text = oraRead.GetString(1);
+            PB_LogoE.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            PB_LogoE.Image = Image.FromStream(oraRead.GetOracleBlob(2));
+            PB_LogoE.BackgroundImage = PB_LogoE.Image;
+            TB_LieuxEquipe.Text = oraRead.GetString(3);
+            LB_Invisible.Text = oraRead.GetInt32(4).ToString();
+            LB_DateEquipe.Text = oraRead.GetDateTime(5).ToString();
+            CB_DivisionEquipe.DropDownStyle = ComboBoxStyle.DropDown;
+            CB_DivisionEquipe.Text = oraRead.GetString(6).ToString();
+
+            oraRead.Close();
+         }
+         catch (OracleException ex)
+         {
+            AfficherErreur(ex);
+         }
       }
    }
 }

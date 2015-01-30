@@ -109,6 +109,9 @@
          this.LB_Text.Size = new System.Drawing.Size(60, 22);
          this.LB_Text.TabIndex = 2;
          this.LB_Text.Text = "Erreur";
+         this.LB_Text.MouseDown += new System.Windows.Forms.MouseEventHandler(this.FormErreur_MouseDown);
+         this.LB_Text.MouseMove += new System.Windows.Forms.MouseEventHandler(this.FormErreur_MouseMove);
+         this.LB_Text.MouseUp += new System.Windows.Forms.MouseEventHandler(this.FormErreur_MouseUp);
          // 
          // FB_Quit
          // 
@@ -136,7 +139,6 @@
          this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
          this.Name = "FormErreur";
          this.Text = "FormErreur";
-         this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormErreur_FormClosing);
          this.Load += new System.EventHandler(this.FormErreur_Load);
          this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.FormErreur_MouseDown);
          this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.FormErreur_MouseMove);

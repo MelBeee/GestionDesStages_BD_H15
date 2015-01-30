@@ -138,20 +138,14 @@ namespace GestionDeStage
          LB_Text.Text += " " + ex.Number.ToString();
          LB_Description.Text = DescriptionErreur;
       }
-
-      private void FormErreur_FormClosing(object sender, FormClosingEventArgs e)
-      {
-         
-      }
-
       private void FB_Continuer_Click(object sender, EventArgs e)
       {
          this.DialogResult = DialogResult.OK;
       }
-
       private void FB_Quitter_Click(object sender, EventArgs e)
       {
          this.DialogResult = DialogResult.Cancel;
       }
    }
 }
+

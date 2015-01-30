@@ -29,6 +29,8 @@
       private void InitializeComponent()
       {
          this.panel1 = new System.Windows.Forms.Panel();
+         this.RB_Gestion = new System.Windows.Forms.RadioButton();
+         this.RB_Industriel = new System.Windows.Forms.RadioButton();
          this.FB_Annuler = new FlashButton.FlashButton();
          this.FB_Appliquer = new FlashButton.FlashButton();
          this.CB_Entreprise = new System.Windows.Forms.ComboBox();
@@ -38,8 +40,6 @@
          this.label1 = new System.Windows.Forms.Label();
          this.LB_AjoutModif = new System.Windows.Forms.Label();
          this.FB_Quit = new FlashButton.FlashButton();
-         this.RB_Industriel = new System.Windows.Forms.RadioButton();
-         this.RB_Gestion = new System.Windows.Forms.RadioButton();
          this.panel1.SuspendLayout();
          this.SuspendLayout();
          // 
@@ -60,10 +60,34 @@
          this.panel1.Size = new System.Drawing.Size(286, 239);
          this.panel1.TabIndex = 2;
          // 
+         // RB_Gestion
+         // 
+         this.RB_Gestion.AutoSize = true;
+         this.RB_Gestion.Font = new System.Drawing.Font("Kristen ITC", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+         this.RB_Gestion.Location = new System.Drawing.Point(78, 128);
+         this.RB_Gestion.Name = "RB_Gestion";
+         this.RB_Gestion.Size = new System.Drawing.Size(68, 20);
+         this.RB_Gestion.TabIndex = 9;
+         this.RB_Gestion.TabStop = true;
+         this.RB_Gestion.Text = "Gestion";
+         this.RB_Gestion.UseVisualStyleBackColor = true;
+         // 
+         // RB_Industriel
+         // 
+         this.RB_Industriel.AutoSize = true;
+         this.RB_Industriel.Font = new System.Drawing.Font("Kristen ITC", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+         this.RB_Industriel.Location = new System.Drawing.Point(148, 128);
+         this.RB_Industriel.Name = "RB_Industriel";
+         this.RB_Industriel.Size = new System.Drawing.Size(78, 20);
+         this.RB_Industriel.TabIndex = 8;
+         this.RB_Industriel.TabStop = true;
+         this.RB_Industriel.Text = "Industriel";
+         this.RB_Industriel.UseVisualStyleBackColor = true;
+         // 
          // FB_Annuler
          // 
          this.FB_Annuler.BackgroundImage = global::GestionDeStage.Properties.Resources.AnnulerNormal;
-         this.FB_Annuler.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+         this.FB_Annuler.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
          this.FB_Annuler.ImageClick = global::GestionDeStage.Properties.Resources.AnnulerClick;
          this.FB_Annuler.ImageDisable = global::GestionDeStage.Properties.Resources.AnnulerDisable;
          this.FB_Annuler.ImageNeutral = global::GestionDeStage.Properties.Resources.AnnulerNormal;
@@ -77,7 +101,7 @@
          // FB_Appliquer
          // 
          this.FB_Appliquer.BackgroundImage = global::GestionDeStage.Properties.Resources.AppliquerNormal;
-         this.FB_Appliquer.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+         this.FB_Appliquer.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
          this.FB_Appliquer.ImageClick = global::GestionDeStage.Properties.Resources.AppliquerClick;
          this.FB_Appliquer.ImageDisable = global::GestionDeStage.Properties.Resources.AppliquerDisable;
          this.FB_Appliquer.ImageNeutral = global::GestionDeStage.Properties.Resources.AppliquerNormal;
@@ -170,31 +194,7 @@
          this.FB_Quit.TabIndex = 1;
          this.FB_Quit.Click += new System.EventHandler(this.FB_Quit_Click);
          // 
-         // RB_Industriel
-         // 
-         this.RB_Industriel.AutoSize = true;
-         this.RB_Industriel.Font = new System.Drawing.Font("Kristen ITC", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-         this.RB_Industriel.Location = new System.Drawing.Point(148, 128);
-         this.RB_Industriel.Name = "RB_Industriel";
-         this.RB_Industriel.Size = new System.Drawing.Size(78, 20);
-         this.RB_Industriel.TabIndex = 8;
-         this.RB_Industriel.TabStop = true;
-         this.RB_Industriel.Text = "Industriel";
-         this.RB_Industriel.UseVisualStyleBackColor = true;
-         // 
-         // RB_Gestion
-         // 
-         this.RB_Gestion.AutoSize = true;
-         this.RB_Gestion.Font = new System.Drawing.Font("Kristen ITC", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-         this.RB_Gestion.Location = new System.Drawing.Point(78, 128);
-         this.RB_Gestion.Name = "RB_Gestion";
-         this.RB_Gestion.Size = new System.Drawing.Size(68, 20);
-         this.RB_Gestion.TabIndex = 9;
-         this.RB_Gestion.TabStop = true;
-         this.RB_Gestion.Text = "Gestion";
-         this.RB_Gestion.UseVisualStyleBackColor = true;
-         // 
-         // AjoutModifStage
+         // FormAjoutModif
          // 
          this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
          this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -204,8 +204,9 @@
          this.Controls.Add(this.FB_Quit);
          this.Controls.Add(this.panel1);
          this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-         this.Name = "AjoutModifStage";
+         this.Name = "FormAjoutModif";
          this.Text = "AjoutModifStage";
+         this.Load += new System.EventHandler(this.FormAjoutModif_Load);
          this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.AjoutModifStage_MouseDown);
          this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.AjoutModifStage_MouseMove);
          this.MouseUp += new System.Windows.Forms.MouseEventHandler(this.AjoutModifStage_MouseUp);
