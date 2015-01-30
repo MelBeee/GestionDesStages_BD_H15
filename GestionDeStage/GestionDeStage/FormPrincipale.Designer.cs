@@ -165,6 +165,7 @@
          this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
          this.Name = "FormPrincipale";
          this.Text = "Gestion des Stages";
+         this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormPrincipale_FormClosing);
          this.Load += new System.EventHandler(this.FormPrincipale_Load);
          this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Form1_MouseDown);
          this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Form1_MouseMove);

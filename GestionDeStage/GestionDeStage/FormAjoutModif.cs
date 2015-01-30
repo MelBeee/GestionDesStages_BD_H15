@@ -11,7 +11,7 @@ using Oracle.DataAccess.Client;
 //  commenter
 namespace GestionDeStage
 {
-   public partial class AjoutModifStage : Form
+   public partial class FormAjoutModif : Form
    {
       // bool savoir si on est entrain de deplacer le form
       private bool _dragging = false;
@@ -20,7 +20,7 @@ namespace GestionDeStage
       string AjouterModifier;
       OracleConnection oraconn_AM = new OracleConnection();
 
-      public AjoutModifStage(string AjoutModif, OracleConnection oraconn)
+      public FormAjoutModif(string AjoutModif, OracleConnection oraconn)
       {
          oraconn_AM = oraconn; 
          AjouterModifier = AjoutModif; 

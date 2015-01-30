@@ -1,6 +1,6 @@
 ﻿namespace GestionDeStage
 {
-   partial class AjoutModifStage
+   partial class FormAjoutModif
    {
       /// <summary>
       /// Required designer variable.

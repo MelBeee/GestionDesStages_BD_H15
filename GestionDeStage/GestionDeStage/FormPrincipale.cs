@@ -21,7 +21,9 @@ namespace GestionDeStage
       private bool _dragging = false;
       // emmagasine la position du curseur lors d'un deplacement de form
       private Point _start_point = new Point(0, 0);
-
+      // boolean pour stocker si le form est connecté ou non
+      public bool connection = false;
+      // variable contenant la connection a la bd 
       OracleConnection oraconnPrincipale = new OracleConnection();
 
       // Deplacement des forms
@@ -61,7 +63,7 @@ namespace GestionDeStage
 
       private void AjoutModifier(string AjoutModifier)
       {
-         AjoutModifStage AjouterUnStage = new AjoutModifStage(AjoutModifier, oraconnPrincipale);
+         FormAjoutModif AjouterUnStage = new FormAjoutModif(AjoutModifier, oraconnPrincipale);
 
          AjouterUnStage.ShowDialog();
       }
@@ -72,6 +74,37 @@ namespace GestionDeStage
          {
             FB_Supprimer.Enabled = false;
             FB_Modifier.Enabled = false; 
+         }
+         Connection();
+         if (!connection) // si pas de connection 
+         {
+            
+         }
+      }
+
+      private void Connection()
+      {
+         if (!connection)
+         {
+            //Remplit le DSource
+            string Dsource = "(DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)" +
+                "(HOST=205.237.244.251)(PORT=1521)))" +
+                "(CONNECT_DATA=(SERVICE_NAME=ORCL.clg.qc.ca)))";
+            string user = "BRO3AU";
+            string passwd = "ORACLE1";
+
+            string chaineconnection = "Data Source = " + Dsource + ";User Id =" + user + "; Password =" + passwd;
+            connection = true;
+            try
+            {
+               oraconnPrincipale.ConnectionString = chaineconnection;
+               oraconnPrincipale.Open();
+            }
+            catch (OracleException ex)
+            {
+               Erreur(ex);
+               connection = false;
+            }
          }
       }
 
@@ -100,6 +133,11 @@ namespace GestionDeStage
 
          if (Erreur.ShowDialog() == DialogResult.Cancel)
             this.Close();
+      }
+
+      private void FormPrincipale_FormClosing(object sender, FormClosingEventArgs e)
+      {
+         oraconnPrincipale.Close();
       }
    }
 }
