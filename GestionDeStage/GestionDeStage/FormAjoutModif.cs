@@ -71,7 +71,7 @@ namespace GestionDeStage
          LB_AjoutModif.Text = AjouterModifier;
          if(AjouterModifier == "Modifier")
          {
-            RemplirInformation();
+             LoadInformation();
          }
       }
 
@@ -82,31 +82,31 @@ namespace GestionDeStage
 
       private void LoadInformation()
       {
-         string commandesql = "select e.*, d.nom from equipes e " +
-                       "inner join divisions d on d.numdivision = e.numdivision " +
-                       "where numequipe = " ;
+         string commandesql = "select s.description, s.type, e.nom from stage s" +
+                       "inner join entreprise e on e.nument = s.nument " +
+                       "where s.numstage = " + NumStagePK.ToString();
          try
          {
-            OracleCommand orcd = new OracleCommand(commandesql, oraconnGestion);
+            OracleCommand orcd = new OracleCommand(commandesql, oraconn_AM);
             orcd.CommandType = CommandType.Text;
             OracleDataReader oraRead = orcd.ExecuteReader();
 
             oraRead.Read();
-            TB_NomEquipe.Text = oraRead.GetString(1);
-            PB_LogoE.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            PB_LogoE.Image = Image.FromStream(oraRead.GetOracleBlob(2));
-            PB_LogoE.BackgroundImage = PB_LogoE.Image;
-            TB_LieuxEquipe.Text = oraRead.GetString(3);
-            LB_Invisible.Text = oraRead.GetInt32(4).ToString();
-            LB_DateEquipe.Text = oraRead.GetDateTime(5).ToString();
-            CB_DivisionEquipe.DropDownStyle = ComboBoxStyle.DropDown;
-            CB_DivisionEquipe.Text = oraRead.GetString(6).ToString();
+            //TB_NomEquipe.Text = oraRead.GetString(1);
+            //PB_LogoE.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            //PB_LogoE.Image = Image.FromStream(oraRead.GetOracleBlob(2));
+            //PB_LogoE.BackgroundImage = PB_LogoE.Image;
+            //TB_LieuxEquipe.Text = oraRead.GetString(3);
+            //LB_Invisible.Text = oraRead.GetInt32(4).ToString();
+            //LB_DateEquipe.Text = oraRead.GetDateTime(5).ToString();
+            //CB_DivisionEquipe.DropDownStyle = ComboBoxStyle.DropDown;
+            //CB_DivisionEquipe.Text = oraRead.GetString(6).ToString();
 
             oraRead.Close();
          }
          catch (OracleException ex)
          {
-            AfficherErreur(ex);
+             Erreur(ex);
          }
       }
    }
