@@ -190,6 +190,18 @@
   <ItemGroup>
     <None Include="Resources\ContinuerNormal.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ModifierClick.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ModifierDisable.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ModifierHover.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ModifierNormal.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

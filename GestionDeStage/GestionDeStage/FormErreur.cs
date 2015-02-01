@@ -40,16 +40,16 @@ namespace GestionDeStage
 
       private void FormErreur_MouseMove(object sender, MouseEventArgs e)
       {
-         _dragging = false; // Enregistre que l'utilisateur a "lacher le form"
+         if (_dragging) // si l'utilisateur a selectionner le form
+         {
+             Point p = PointToScreen(e.Location);
+             Location = new Point(p.X - this._start_point.X, p.Y - this._start_point.Y);
+         }
       }
 
       private void FormErreur_MouseUp(object sender, MouseEventArgs e)
       {
-         if (_dragging) // si l'utilisateur a selectionner le form
-         {
-            Point p = PointToScreen(e.Location);
-            Location = new Point(p.X - this._start_point.X, p.Y - this._start_point.Y);
-         }
+          _dragging = false; // Enregistre que l'utilisateur a "lacher le form"
       }
 
       private void SwitchException(OracleException ex)
@@ -145,6 +145,11 @@ namespace GestionDeStage
       private void FB_Quitter_Click(object sender, EventArgs e)
       {
          this.DialogResult = DialogResult.Cancel;
+      }
+
+      private void FB_Quit_Click(object sender, EventArgs e)
+      {
+          this.Close();
       }
    }
 }

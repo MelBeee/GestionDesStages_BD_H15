@@ -118,47 +118,53 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="AnnulerHover" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\AnnulerHover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="SupprimerHover" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\SupprimerHover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="AppliquerClick" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\AppliquerClick.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="AjouterClick" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\AjouterClick.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="CloseHover" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\CloseHover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="FermerHover" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\FermerHover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="AppliquerHover" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\AppliquerHover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="SupprimerNormal" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\SupprimerNormal.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="AjouterDisable" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\AjouterDisable.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="AjouterNormal" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\AjouterNormal.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="AppliquerNormal" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\AppliquerNormal.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="AppliquerDisable" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\AppliquerDisable.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="SupprimerHover" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\SupprimerHover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="SupprimerClick" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\SupprimerClick.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="CloseDisable" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\CloseDisable.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="AnnulerDisable" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\AnnulerDisable.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="FermerClick" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\FermerClick.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ContinuerClick" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ContinuerClick.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="SupprimerDisable" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\SupprimerDisable.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="AjouterNormal" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\AjouterNormal.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="ModifierClick" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ModifierClick.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="CloseClick" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\CloseClick.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="error" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\error.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="FermerClick" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\FermerClick.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="AnnulerHover" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\AnnulerHover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="FermerHover" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\FermerHover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="AppliquerClick" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\AppliquerClick.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="CloseNormal" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\CloseNormal.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -166,43 +172,49 @@
   <data name="FermerDisable" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\FermerDisable.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="AppliquerHover" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\AppliquerHover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="CloseDisable" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\CloseDisable.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="FermerNormal" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\FermerNormal.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="SupprimerClick" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\SupprimerClick.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="error" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\error.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="AjouterHover" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\AjouterHover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="AnnulerNormal" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\AnnulerNormal.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="AnnulerClick" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\AnnulerClick.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="CloseHover" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\CloseHover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="AppliquerDisable" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\AppliquerDisable.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="ContinuerClick" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\ContinuerClick.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="AjouterDisable" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\AjouterDisable.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="ContinuerDisable" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\ContinuerDisable.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="AppliquerNormal" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\AppliquerNormal.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="FermerNormal" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\FermerNormal.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="AnnulerClick" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\AnnulerClick.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="CloseClick" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\CloseClick.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="ContinuerHover" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\ContinuerHover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="AjouterHover" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\AjouterHover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="AjouterClick" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\AjouterClick.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="ContinuerNormal" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\ContinuerNormal.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ModifierDisable" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ModifierDisable.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ModifierHover" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ModifierHover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ModifierNormal" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ModifierNormal.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>
