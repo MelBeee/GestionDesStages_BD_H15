@@ -213,5 +213,10 @@ namespace GestionDeStage
             oraRead.Close();
             return valide;
         }
+
+        private void panel3_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }

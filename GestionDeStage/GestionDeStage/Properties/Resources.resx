@@ -181,6 +181,9 @@
   <data name="AjouterDisable" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\AjouterDisable.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="ModifierNormal" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ModifierNormal.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="ContinuerDisable" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\ContinuerDisable.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -208,13 +211,34 @@
   <data name="ContinuerNormal" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\ContinuerNormal.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="ModifierDisable" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\ModifierDisable.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="ModifierHover" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\ModifierHover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="ModifierNormal" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\ModifierNormal.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="ModifierDisable" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ModifierDisable.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="RetourNormalDoite" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\RetourNormalDoite.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="RetourNormal" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\RetourNormal.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="RetourHoverDoite" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\RetourHoverDoite.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="RetourHover" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\RetourHover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="RetourDisableDoite" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\RetourDisableDoite.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="RetourDisable" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\RetourDisable.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="RetourClickDoite" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\RetourClickDoite.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="RetourClick" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\RetourClick.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>
