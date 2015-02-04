@@ -68,7 +68,7 @@ namespace GestionDeStage
 
       private void AjoutModifier(string AjoutModifier)
       {
-         if (NumstageValide(TB_NumStage.Text))
+         if (NumstageValide(TB_NumStage.Text) || AjoutModifier == "Ajouter")
          {
             int numstage = -1;
             if (TB_NumStage.Text != "")
@@ -126,12 +126,6 @@ namespace GestionDeStage
       {
          if (!connection)
          {
-            //string ChaineConnexion = "Data Source=(DESCRIPTION="
-            //                     + "(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)"
-            //                     + "(HOST=205.237.244.251)(PORT=1521)))"
-            //                     + "(CONNECT_DATA=(SERVICE_NAME=ORCL)));"
-            //                     + "User Id=boucherm;Password=ORACLE1";
-            // Remplit le DSource
             string Dsource =  "(DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)" +
                               "(HOST=205.237.244.251)(PORT=1521)))" + 
                               "(CONNECT_DATA=(SERVICE_NAME=ORCL.clg.qc.ca)))";
@@ -240,11 +234,11 @@ namespace GestionDeStage
 
          if (oraRead.Read())
          {
-            valide = true;
+             valide = true;
          }
          else
          {
-            MessageBox.Show("Numéro de stage invalide");
+             MessageBox.Show("Numéro de stage invalide");
          }
          oraRead.Close();
          return valide;
