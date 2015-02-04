@@ -89,60 +89,59 @@ namespace GestionDeStage
 
         private void RemplirInformation()
         {
-            //string commandesql = "select nom from entreprise";
+           string commandesql = "select nom from entreprise";
 
-            //try
-            //{
-            //    OracleCommand orcd = new OracleCommand(commandesql, oraconn_AM);
-            //    orcd.CommandType = CommandType.Text;
-            //    OracleDataReader oraRead = orcd.ExecuteReader();
+           try
+           {
+              OracleCommand orcd = new OracleCommand(commandesql, oraconn_AM);
+              orcd.CommandType = CommandType.Text;
+              OracleDataReader oraRead = orcd.ExecuteReader();
 
-            //    while (oraRead.Read())
-            //    {
-            //        TB_Description.Text += oraRead.GetString(0); 
-            //        //CB_Entreprise.Items.Add(oraRead.GetString(0).ToString());
-            //    }
+              while (oraRead.Read())
+              {
+                 CB_Entreprise.Items.Add(oraRead.GetString(0).ToString());
+              }
 
-            //    oraRead.Close();
-            //}
-            //catch(OracleException ex)
-            //{
-            //    Erreur(ex);
+              oraRead.Close();
+           }
+           catch (OracleException ex)
+           {
+              Erreur(ex);
 
-            //}
+           }
         }
 
         private void LoadInformation()
         {
-            //string commandesql = "select s.description, s.typestage, e.nom from stage s " +
-            //              "inner join entreprise e on e.nument = s.nument " +
-            //              "where s.numstage = " + NumStagePK.ToString();
-            //try
-            //{
-            //    OracleCommand orcd = new OracleCommand(commandesql, oraconn_AM);
-            //    orcd.CommandType = CommandType.Text;
-            //    OracleDataReader oraRead = orcd.ExecuteReader();
+           string commandesql = "select s.description, s.typestage, e.nom from stage s " +
+                         "inner join entreprise e on e.nument = s.nument " +
+                         "where s.numstage = " + NumStagePK.ToString();
+           try
+           {
+              OracleCommand orcd = new OracleCommand(commandesql, oraconn_AM);
+              orcd.CommandType = CommandType.Text;
+              OracleDataReader oraRead = orcd.ExecuteReader();
 
-            //    oraRead.Read();
+              oraRead.Read();
 
-            //    TB_Description.Text = oraRead.GetString(0);
-            //    if (oraRead.GetString(1) == "ind")
-            //    {
-            //        RB_Industriel.Select();
-            //    }
-            //    else
-            //    {
-            //        RB_Gestion.Select();
-            //    }
-            //    LB_NomEnt.Text = oraRead.GetString(2);
+              TB_Description.Text = oraRead.GetString(0);
+              if (oraRead.GetString(1) == "ind")
+              {
+                 RB_Industriel.Select();
+              }
+              else
+              {
+                 RB_Gestion.Select();
+              }
+              LB_NomEnt.Text = oraRead.GetString(2);
 
 
-            //    oraRead.Close();
-            //}
-            //catch (OracleException ex)
-            //{
-            //    Erreur(ex);
-            //}
+              oraRead.Close();
+           }
+           catch (OracleException ex)
+           {
+              Erreur(ex);
+           }
         }
 
         private string Choixdelacommande()
@@ -167,41 +166,41 @@ namespace GestionDeStage
 
         private void AjoutModif()
         {
-            //bool reussi = true;
-            //try
-            //{
-            //    // on affecte les valeurs aux paramètres.
-            //    OracleParameter oradescription = new OracleParameter(":description", OracleDbType.Varchar2);
-            //    OracleParameter oratype = new OracleParameter(":typestage", OracleDbType.Varchar2);
-            //    OracleParameter oranument = new OracleParameter(":nument", OracleDbType.Char);
-            //    // lalblablabla
-            //    OracleCommand oraModif = new OracleCommand(Choixdelacommande(), oraconn_AM);
-            //    oraModif.CommandType = CommandType.Text;
+           bool reussi = true;
+           try
+           {
+              // on affecte les valeurs aux paramètres.
+              OracleParameter oradescription = new OracleParameter(":description", OracleDbType.Varchar2);
+              OracleParameter oratype = new OracleParameter(":typestage", OracleDbType.Varchar2);
+              OracleParameter oranument = new OracleParameter(":nument", OracleDbType.Char);
+              // lalblablabla
+              OracleCommand oraModif = new OracleCommand(Choixdelacommande(), oraconn_AM);
+              oraModif.CommandType = CommandType.Text;
 
-            //    oradescription.Value = TB_Description.Text;
-            //    if (RB_Gestion.Checked)
-            //        oratype.Value = RB_Gestion.Text.ToString();
-            //    else
-            //        oratype.Value = RB_Industriel.Text.ToString();
-            //    oranument.Value = CB_Entreprise.Text;
-            //    // En utilisant la propriété Paramètres de OracleCommand, on spécifie les paramètres de la requête SQL.
-            //    oraModif.Parameters.Add(oradescription);
-            //    oraModif.Parameters.Add(oratype);
-            //    oraModif.Parameters.Add(oranument);
+              oradescription.Value = TB_Description.Text;
+              if (RB_Gestion.Checked)
+                 oratype.Value = RB_Gestion.Text.ToString();
+              else
+                 oratype.Value = RB_Industriel.Text.ToString();
+              oranument.Value = CB_Entreprise.Text;
+              // En utilisant la propriété Paramètres de OracleCommand, on spécifie les paramètres de la requête SQL.
+              oraModif.Parameters.Add(oradescription);
+              oraModif.Parameters.Add(oratype);
+              oraModif.Parameters.Add(oranument);
 
-            //    // on exécute la requête
-            //    oraModif.ExecuteNonQuery();
-            //    // on appelle la fonction dissocier pour pouvoir insérer une deuxième fois.
-            //}
-            //catch (OracleException ex)
-            //{
-            //    reussi = false;
-            //    Erreur(ex);
-            //}
-            //if (reussi)
-            //    MessageBox.Show("Application reussite");
-            //else
-            //    MessageBox.Show("Application non reussite");
+              // on exécute la requête
+              oraModif.ExecuteNonQuery();
+              // on appelle la fonction dissocier pour pouvoir insérer une deuxième fois.
+           }
+           catch (OracleException ex)
+           {
+              reussi = false;
+              Erreur(ex);
+           }
+           if (reussi)
+              MessageBox.Show("Application reussite");
+           else
+              MessageBox.Show("Application non reussite");
         }
     }
 }
