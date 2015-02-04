@@ -136,7 +136,6 @@
          this.CB_Entreprise.Name = "CB_Entreprise";
          this.CB_Entreprise.Size = new System.Drawing.Size(185, 25);
          this.CB_Entreprise.TabIndex = 5;
-         this.CB_Entreprise.SelectedIndexChanged += new System.EventHandler(this.CB_Entreprise_SelectedIndexChanged);
          // 
          // TB_Description
          // 

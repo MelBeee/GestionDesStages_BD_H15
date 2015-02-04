@@ -20,7 +20,6 @@ namespace GestionDeStage
       string AjouterModifier;
       OracleConnection oraconn_AM = new OracleConnection();
       int NumStagePK;
-      string NumEntPK;
 
       public FormAjoutModif(string AjoutModif, OracleConnection oraconn, int NumStage)
       {
@@ -81,7 +80,7 @@ namespace GestionDeStage
          }
          else
          {
-            FB_Appliquer.Enabled = false;
+            FB_Appliquer.Enabled = true;
             LB_NomEnt.Enabled = false;
             LB_NomEnt.Visible = false;
             CB_Entreprise.Enabled = true;
@@ -147,38 +146,18 @@ namespace GestionDeStage
          }
       }
 
-      private string Choixdelacommande()
+      private bool Ajout()
       {
-         string commande;
-         if (AjouterModifier == "Ajouter")
-         {
-            commande = " insert into stage " +
-                       " (description, typestage, nument) values " +
-                       " (:description, :typestage, :nument)";
-         }
-         else
-         {
-            commande = " update stage set " +
-                       " description = :description, " +
-                       " typestage = :typestage, " +
-                       " nument = :nument " +
-                       " where numstage = " + NumStagePK.ToString();
-         }
-         return commande;
-      }
-
-      private void AjoutModif()
-      {
-         TrouverNument();
          bool reussi = true;
+         string commande = "insert into stage (description, typestage, nument) values " +
+                          "(:Description, :TypeStage, (select nument from entreprise where nom = '" + CB_Entreprise.SelectedItem.ToString() + "'))";
          try
          {
             // on affecte les valeurs aux paramètres.
-            OracleParameter oradescription = new OracleParameter(":description", OracleDbType.Varchar2);
-            OracleParameter oratype = new OracleParameter(":typestage", OracleDbType.Varchar2);
-            OracleParameter oranument = new OracleParameter(":nument", OracleDbType.Char);
-            // lalblablabla
-            OracleCommand oraModif = new OracleCommand(Choixdelacommande(), oraconn_AM);
+            OracleParameter oradescription = new OracleParameter(":Description", OracleDbType.Varchar2, 100);
+            OracleParameter oratype = new OracleParameter(":TypeStage", OracleDbType.Varchar2, 3);
+
+            OracleCommand oraModif = new OracleCommand(commande, oraconn_AM);
             oraModif.CommandType = CommandType.Text;
 
             oradescription.Value = TB_Description.Text;
@@ -186,25 +165,82 @@ namespace GestionDeStage
                oratype.Value = "ges";
             else
                oratype.Value = "ind";
-            oranument.Value = NumEntPK;
             // En utilisant la propriété Paramètres de OracleCommand, on spécifie les paramètres de la requête SQL.
             oraModif.Parameters.Add(oradescription);
             oraModif.Parameters.Add(oratype);
-            oraModif.Parameters.Add(oranument);
 
             // on exécute la requête
             oraModif.ExecuteNonQuery();
             // on appelle la fonction dissocier pour pouvoir insérer une deuxième fois.
+            MessageBox.Show("Application reussite");
          }
          catch (OracleException ex)
          {
-            reussi = false;
             Erreur(ex);
+            reussi = false;
          }
-         if (reussi)
+         return reussi;
+      }
+
+      //private bool Modifier()
+      //{
+      //   bool reussi = true;
+
+      //   try
+      //   {
+      //      string commande = " update stage set description = '" + TB_Description.Text + "', typestage = 'ind' where numstage = " + NumStagePK;
+      //      OracleCommand oraclecomm = new OracleCommand(commande, oraconn_AM);
+      //      oraclecomm.CommandType = CommandType.Text;
+      //      oraclecomm.ExecuteNonQuery();
+
+      //      MessageBox.Show("Reussi");
+      //   }
+      //   catch (OracleException ex)
+      //   {
+      //      Erreur(ex);
+      //      reussi = false; 
+      //   }
+      //   return reussi; 
+      //}
+
+      private bool Modifier()
+      {
+         bool reussi = true;
+         string commande = " update stage set " +
+                           " description = :Description, " +
+                           " typestage =  :TypeStage " +
+                           " where numstage = " + NumStagePK;
+         try
+         {
+            // on affecte les valeurs aux paramètres.
+            OracleParameter oradescription = new OracleParameter(":Description", OracleDbType.Varchar2, 100);
+            OracleParameter oratype = new OracleParameter(":TypeStage", OracleDbType.Varchar2, 3);
+
+            oradescription.Value = TB_Description.Text;
+            if (RB_Gestion.Checked)
+               oratype.Value = "ges";
+            else
+               oratype.Value = "ind";
+
+            OracleCommand oraModif = new OracleCommand(commande, oraconn_AM);
+            oraModif.CommandType = CommandType.Text;
+
+            // En utilisant la propriété Paramètres de OracleCommand, on spécifie les paramètres de la requête SQL.
+            oraModif.Parameters.Add(oradescription);
+            oraModif.Parameters.Add(oratype);
+
+            // on exécute la requête
+            oraModif.ExecuteNonQuery();
+            // on appelle la fonction dissocier pour pouvoir insérer une deuxième fois.
             MessageBox.Show("Application reussite");
-         else
-            MessageBox.Show("Application non reussite");
+         }
+         catch (OracleException ex)
+         {
+            MessageBox.Show(ex.ToString());
+            //Erreur(ex);
+            reussi = false;
+         }
+         return reussi;
       }
 
       private bool ChampsRempli()
@@ -216,42 +252,22 @@ namespace GestionDeStage
 
       private void FB_Appliquer_Click(object sender, EventArgs e)
       {
-         if(ChampsRempli())
-            AjoutModif();
-      }
-
-      private void TrouverNument()
-      {
-         string commande;
+         bool reussi = true;
          if (AjouterModifier == "Ajouter")
          {
-            commande = "select nument from entreprise where nom like '" + LB_NomEnt + "'";
+            reussi = Ajout();
          }
          else
          {
-            commande = "select nument from entreprise where nom like '" + CB_Entreprise.Text + "'";
+            reussi = Modifier();
          }
 
-         try
+         if (reussi)
          {
-            OracleCommand orcd = new OracleCommand(commande, oraconn_AM);
-            orcd.CommandType = CommandType.Text;
-            OracleDataReader oraRead = orcd.ExecuteReader();
-
-            oraRead.Read();
-            NumEntPK = oraRead.GetString(0);
-
-            oraRead.Close();
+            this.Close();
          }
-         catch (OracleException ex)
-         {
-            Erreur(ex);
-         }
+
       }
 
-      private void CB_Entreprise_SelectedIndexChanged(object sender, EventArgs e)
-      {
-         TrouverNument();
-      }
    }
 }
