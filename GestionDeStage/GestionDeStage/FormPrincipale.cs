@@ -68,7 +68,7 @@ namespace GestionDeStage
 
       private void AjoutModifier(string AjoutModifier)
       {
-         if (NumstageValide(TB_NumStage.Text) || AjoutModifier == "Ajouter")
+         if (AjoutModifier == "Ajouter" || NumstageValide(TB_NumStage.Text) )
          {
             int numstage = -1;
             if (TB_NumStage.Text != "")
@@ -90,6 +90,8 @@ namespace GestionDeStage
          {
             FB_Supprimer.Enabled = false;
             FB_Modifier.Enabled = false;
+            FB_Suivant.Enabled = false;
+            FB_Precedant.Enabled = false; 
          }
          Connection();
          if (connection)
@@ -100,26 +102,26 @@ namespace GestionDeStage
 
       private void RemplirListBox()
       {
-         //string commandesql = "select nom from entreprise";
+         string commandesql = "select nom from entreprise";
 
-         //try
-         //{
-         //   OracleCommand orcd = new OracleCommand(commandesql, oraconnPrincipale);
-         //   orcd.CommandType = CommandType.Text;
-         //   OracleDataReader oraRead = orcd.ExecuteReader();
+         try
+         {
+            OracleCommand orcd = new OracleCommand(commandesql, oraconnPrincipale);
+            orcd.CommandType = CommandType.Text;
+            OracleDataReader oraRead = orcd.ExecuteReader();
 
-         //   while (oraRead.Read())
-         //   {
-         //      LBX_Entreprise.Items.Add(oraRead.GetString(0));
-         //   }
+            while (oraRead.Read())
+            {
+               LBX_Entreprise.Items.Add(oraRead.GetString(0));
+            }
 
-         //   oraRead.Close();
-         //}
-         //catch (OracleException ex)
-         //{
-         //   Erreur(ex);
+            oraRead.Close();
+         }
+         catch (OracleException ex)
+         {
+            Erreur(ex);
 
-         //}
+         }
       }
 
       private void Connection()
@@ -182,10 +184,12 @@ namespace GestionDeStage
                orcd.ExecuteNonQuery();
 
                MessageBox.Show("Suppression reussite");
+               FB_Supprimer.Enabled = false; 
             }
             catch (OracleException ex)
             {
                MessageBox.Show("Suppression non reussite");
+               FB_Supprimer.Enabled = false; 
                Erreur(ex);
             }
             TB_NumStage.Clear();
@@ -193,6 +197,7 @@ namespace GestionDeStage
          else
          {
             TB_NumStage.Text = "";
+            UpdateControl();
          }
          UpdateControl();
       }
@@ -246,60 +251,91 @@ namespace GestionDeStage
 
       private void LBX_Entreprise_SelectedIndexChanged(object sender, EventArgs e)
       {
-         //if (DataSetRempli)
-         //{
-         //   DelierStage();
-         //   monDataSet.Clear();
-         //   DataSetRempli = false;
-         //}
-         //try
-         //{
-         //   string sql2 = "select description, type from stage " +
-         //                 "inner join entreprise e on stage.nument = e.nument " +
-         //                 "where e.nom like '" + LBX_Entreprise.SelectedItem.ToString() + "'";
+         LB_Type.Visible = true;
+         LB_TitreDescription.Visible = true;
+         LB_TitreType.Visible = true; 
+         FB_Suivant.Enabled = true;
+         LB_TitreNumStage.Visible = true;
+         LB_NumStage.Visible = true; 
+         FB_Precedant.Enabled = false;
+         if (DataSetRempli)
+         {
+            DelierStage();
+            monDataSet.Clear();
+            DataSetRempli = false;
+         }
+         try
+         {
+            string sql2 = " select numstage, description, typestage from stage "+
+                          " inner join entreprise e on stage.nument = e.nument "+
+                          " where e.nom like '" + LBX_Entreprise.SelectedItem.ToString() + "' ";
 
-         //   OracleDataAdapter Adapter = new OracleDataAdapter(sql2, oraconnPrincipale);
-         //   if (monDataSet.Tables.Contains("stage"))
-         //   {
-         //      monDataSet.Tables["stage"].Clear();
-         //   }
+            OracleDataAdapter Adapter = new OracleDataAdapter(sql2, oraconnPrincipale);
+            if (monDataSet.Tables.Contains("stage"))
+            {
+               monDataSet.Tables["stage"].Clear();
+            }
 
-         //   Adapter.Fill(monDataSet, "stage");
-         //   //Adapter.Dispose();
-         //   if(this.BindingContext[monDataSet,"stage"].Count > 0)
-         //   {
-         //      LierStage();
-         //   }
-         //   else
-         //   {
-         //      DelierStage();
-         //   }
-         //   // on apelle la fonction lier pour faire
-         //   // la liaison des données du DataSet avec les zones de text.
+            Adapter.Fill(monDataSet, "stage");
+            Adapter.Dispose();
+            if(this.BindingContext[monDataSet, "stage"].Count == 0)
+            {
+               LB_Description.Text = "Aucun stage disponible pour cette entreprise";
+               LB_Type.Visible = false;
+               LB_TitreDescription.Visible = false;
+               LB_TitreType.Visible = false;
+               LB_TitreNumStage.Visible = false;
+               LB_NumStage.Visible = false; 
+            }
+            if (this.BindingContext[monDataSet, "stage"].Count > 0)
+            {
+               LierStage();
+            }
+            else
+            {
+               DelierStage();
+            }
+            // on apelle la fonction lier pour faire
+            // la liaison des données du DataSet avec les zones de text.
 
 
-         //   if (this.BindingContext[monDataSet, "stage"].Count <= 1)
-         //   {
-         //      FB_Suivant.Enabled = false;
-         //      FB_Precedant.Enabled = false;
-         //   }
-         //   DataSetRempli = true;
-         //}
-         //catch (OracleException ex)
-         //{
-         //   Erreur(ex);
-         //}
+            if (this.BindingContext[monDataSet, "stage"].Count <= 1)
+            {
+               FB_Suivant.Enabled = false;
+               FB_Precedant.Enabled = false;
+            }
+            DataSetRempli = true;
+         }
+         catch (OracleException ex)
+         {
+            Erreur(ex);
+         }
       }
       private void LierStage()
       {
+         LB_NumStage.DataBindings.Add("text", monDataSet, "stage.numstage");
          LB_Description.DataBindings.Add("text", monDataSet, "stage.description");
-         LB_Type.DataBindings.Add("text", monDataSet, "stage.type");
+         LB_Type.DataBindings.Add("text", monDataSet, "stage.typestage");
+         ConvertirType();
+      }
+
+      private void ConvertirType()
+      {
+         if (LB_Type.Text == "ges" || LB_Type.Text == "Informatique de Gestion")
+         {
+            LB_Type.Text = "Informatique de Gestion";
+         }
+         else
+         {
+            LB_Type.Text = "Informatique Industrielle";
+         }
       }
 
       private void DelierStage()
       {
+         LB_NumStage.DataBindings.Clear(); 
          LB_Description.DataBindings.Clear();
-         LB_Type.DataBindings.Clear();
+         LB_Type .DataBindings.Clear();
       }
 
       private void FB_Suivant_Click(object sender, EventArgs e)
@@ -310,6 +346,7 @@ namespace GestionDeStage
          {
             FB_Suivant.Enabled = false;
          }
+         ConvertirType();
       }
 
       private void FB_Precedant_Click(object sender, EventArgs e)
