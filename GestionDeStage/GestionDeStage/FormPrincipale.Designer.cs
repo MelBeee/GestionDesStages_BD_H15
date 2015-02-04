@@ -33,20 +33,20 @@
          this.LB_Type = new System.Windows.Forms.Label();
          this.LB_Description = new System.Windows.Forms.Label();
          this.LBX_Entreprise = new System.Windows.Forms.ListBox();
-         this.FB_Suivant = new FlashButton.FlashButton();
-         this.FB_Precedant = new FlashButton.FlashButton();
          this.panel2 = new System.Windows.Forms.Panel();
          this.label2 = new System.Windows.Forms.Label();
          this.TB_NumStage = new System.Windows.Forms.TextBox();
-         this.FB_Modifier = new FlashButton.FlashButton();
-         this.FB_Ajouter = new FlashButton.FlashButton();
-         this.FB_Supprimer = new FlashButton.FlashButton();
          this.label1 = new System.Windows.Forms.Label();
-         this.FB_Quit = new FlashButton.FlashButton();
          this.LB_TitreDescription = new System.Windows.Forms.Label();
          this.LB_TitreType = new System.Windows.Forms.Label();
          this.LB_TitreNumStage = new System.Windows.Forms.Label();
          this.LB_NumStage = new System.Windows.Forms.Label();
+         this.FB_Quit = new FlashButton.FlashButton();
+         this.FB_Suivant = new FlashButton.FlashButton();
+         this.FB_Precedant = new FlashButton.FlashButton();
+         this.FB_Modifier = new FlashButton.FlashButton();
+         this.FB_Ajouter = new FlashButton.FlashButton();
+         this.FB_Supprimer = new FlashButton.FlashButton();
          this.panel1.SuspendLayout();
          this.panel3.SuspendLayout();
          this.panel2.SuspendLayout();
@@ -110,34 +110,6 @@
          this.LBX_Entreprise.TabIndex = 2;
          this.LBX_Entreprise.SelectedIndexChanged += new System.EventHandler(this.LBX_Entreprise_SelectedIndexChanged);
          // 
-         // FB_Suivant
-         // 
-         this.FB_Suivant.BackgroundImage = global::GestionDeStage.Properties.Resources.RetourNormalDoite;
-         this.FB_Suivant.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-         this.FB_Suivant.ImageClick = global::GestionDeStage.Properties.Resources.RetourClickDoite;
-         this.FB_Suivant.ImageDisable = global::GestionDeStage.Properties.Resources.RetourDisableDoite;
-         this.FB_Suivant.ImageNeutral = global::GestionDeStage.Properties.Resources.RetourNormalDoite;
-         this.FB_Suivant.ImageOver = global::GestionDeStage.Properties.Resources.RetourHoverDoite;
-         this.FB_Suivant.Location = new System.Drawing.Point(154, 204);
-         this.FB_Suivant.Name = "FB_Suivant";
-         this.FB_Suivant.Size = new System.Drawing.Size(22, 21);
-         this.FB_Suivant.TabIndex = 1;
-         this.FB_Suivant.Click += new System.EventHandler(this.FB_Suivant_Click);
-         // 
-         // FB_Precedant
-         // 
-         this.FB_Precedant.BackgroundImage = global::GestionDeStage.Properties.Resources.RetourNormal;
-         this.FB_Precedant.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-         this.FB_Precedant.ImageClick = global::GestionDeStage.Properties.Resources.RetourClick;
-         this.FB_Precedant.ImageDisable = global::GestionDeStage.Properties.Resources.RetourDisable;
-         this.FB_Precedant.ImageNeutral = global::GestionDeStage.Properties.Resources.RetourNormal;
-         this.FB_Precedant.ImageOver = global::GestionDeStage.Properties.Resources.RetourHover;
-         this.FB_Precedant.Location = new System.Drawing.Point(121, 204);
-         this.FB_Precedant.Name = "FB_Precedant";
-         this.FB_Precedant.Size = new System.Drawing.Size(23, 21);
-         this.FB_Precedant.TabIndex = 0;
-         this.FB_Precedant.Click += new System.EventHandler(this.FB_Precedant_Click);
-         // 
          // panel2
          // 
          this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(250)))), ((int)(((byte)(180)))));
@@ -170,6 +142,107 @@
          this.TB_NumStage.TabIndex = 3;
          this.TB_NumStage.TextChanged += new System.EventHandler(this.TB_NumStage_TextChanged);
          this.TB_NumStage.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TB_NumStage_KeyPress);
+         // 
+         // label1
+         // 
+         this.label1.AutoSize = true;
+         this.label1.Font = new System.Drawing.Font("Kristen ITC", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+         this.label1.ForeColor = System.Drawing.Color.White;
+         this.label1.Location = new System.Drawing.Point(3, 2);
+         this.label1.Name = "label1";
+         this.label1.Size = new System.Drawing.Size(149, 22);
+         this.label1.TabIndex = 1;
+         this.label1.Text = "Gestion des Stages";
+         this.label1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Form1_MouseDown);
+         this.label1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Form1_MouseMove);
+         this.label1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Form1_MouseUp);
+         // 
+         // LB_TitreDescription
+         // 
+         this.LB_TitreDescription.Font = new System.Drawing.Font("Kristen ITC", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+         this.LB_TitreDescription.Location = new System.Drawing.Point(14, 103);
+         this.LB_TitreDescription.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+         this.LB_TitreDescription.Name = "LB_TitreDescription";
+         this.LB_TitreDescription.Size = new System.Drawing.Size(270, 20);
+         this.LB_TitreDescription.TabIndex = 5;
+         this.LB_TitreDescription.Text = "Description de stage";
+         this.LB_TitreDescription.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+         // 
+         // LB_TitreType
+         // 
+         this.LB_TitreType.Font = new System.Drawing.Font("Kristen ITC", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+         this.LB_TitreType.Location = new System.Drawing.Point(14, 164);
+         this.LB_TitreType.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+         this.LB_TitreType.Name = "LB_TitreType";
+         this.LB_TitreType.Size = new System.Drawing.Size(270, 20);
+         this.LB_TitreType.TabIndex = 6;
+         this.LB_TitreType.Text = "Type de stage";
+         this.LB_TitreType.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+         // 
+         // LB_TitreNumStage
+         // 
+         this.LB_TitreNumStage.Font = new System.Drawing.Font("Kristen ITC", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+         this.LB_TitreNumStage.Location = new System.Drawing.Point(14, 68);
+         this.LB_TitreNumStage.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+         this.LB_TitreNumStage.Name = "LB_TitreNumStage";
+         this.LB_TitreNumStage.Size = new System.Drawing.Size(270, 20);
+         this.LB_TitreNumStage.TabIndex = 8;
+         this.LB_TitreNumStage.Text = "Numero de stage";
+         this.LB_TitreNumStage.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+         // 
+         // LB_NumStage
+         // 
+         this.LB_NumStage.Font = new System.Drawing.Font("Kristen ITC", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+         this.LB_NumStage.Location = new System.Drawing.Point(14, 84);
+         this.LB_NumStage.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+         this.LB_NumStage.Name = "LB_NumStage";
+         this.LB_NumStage.Size = new System.Drawing.Size(270, 20);
+         this.LB_NumStage.TabIndex = 7;
+         this.LB_NumStage.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+         // 
+         // FB_Quit
+         // 
+         this.FB_Quit.BackColor = System.Drawing.Color.Yellow;
+         this.FB_Quit.BackgroundImage = global::GestionDeStage.Properties.Resources.CloseNormal;
+         this.FB_Quit.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+         this.FB_Quit.ImageClick = global::GestionDeStage.Properties.Resources.CloseClick;
+         this.FB_Quit.ImageDisable = global::GestionDeStage.Properties.Resources.CloseDisable;
+         this.FB_Quit.ImageNeutral = global::GestionDeStage.Properties.Resources.CloseNormal;
+         this.FB_Quit.ImageOver = global::GestionDeStage.Properties.Resources.CloseHover;
+         this.FB_Quit.Location = new System.Drawing.Point(301, 2);
+         this.FB_Quit.Margin = new System.Windows.Forms.Padding(4);
+         this.FB_Quit.Name = "FB_Quit";
+         this.FB_Quit.Size = new System.Drawing.Size(20, 20);
+         this.FB_Quit.TabIndex = 0;
+         this.FB_Quit.Click += new System.EventHandler(this.FB_Quit_Click);
+         // 
+         // FB_Suivant
+         // 
+         this.FB_Suivant.BackgroundImage = global::GestionDeStage.Properties.Resources.RetourNormalDoite;
+         this.FB_Suivant.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+         this.FB_Suivant.ImageClick = global::GestionDeStage.Properties.Resources.RetourClickDoite;
+         this.FB_Suivant.ImageDisable = global::GestionDeStage.Properties.Resources.RetourDisableDoite;
+         this.FB_Suivant.ImageNeutral = global::GestionDeStage.Properties.Resources.RetourNormalDoite;
+         this.FB_Suivant.ImageOver = global::GestionDeStage.Properties.Resources.RetourHoverDoite;
+         this.FB_Suivant.Location = new System.Drawing.Point(154, 204);
+         this.FB_Suivant.Name = "FB_Suivant";
+         this.FB_Suivant.Size = new System.Drawing.Size(22, 21);
+         this.FB_Suivant.TabIndex = 1;
+         this.FB_Suivant.Click += new System.EventHandler(this.FB_Suivant_Click);
+         // 
+         // FB_Precedant
+         // 
+         this.FB_Precedant.BackgroundImage = global::GestionDeStage.Properties.Resources.RetourNormal;
+         this.FB_Precedant.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+         this.FB_Precedant.ImageClick = global::GestionDeStage.Properties.Resources.RetourClick;
+         this.FB_Precedant.ImageDisable = global::GestionDeStage.Properties.Resources.RetourDisable;
+         this.FB_Precedant.ImageNeutral = global::GestionDeStage.Properties.Resources.RetourNormal;
+         this.FB_Precedant.ImageOver = global::GestionDeStage.Properties.Resources.RetourHover;
+         this.FB_Precedant.Location = new System.Drawing.Point(121, 204);
+         this.FB_Precedant.Name = "FB_Precedant";
+         this.FB_Precedant.Size = new System.Drawing.Size(23, 21);
+         this.FB_Precedant.TabIndex = 0;
+         this.FB_Precedant.Click += new System.EventHandler(this.FB_Precedant_Click);
          // 
          // FB_Modifier
          // 
@@ -216,79 +289,6 @@
          this.FB_Supprimer.Size = new System.Drawing.Size(97, 21);
          this.FB_Supprimer.TabIndex = 0;
          this.FB_Supprimer.Click += new System.EventHandler(this.FB_Supprimer_Click);
-         // 
-         // label1
-         // 
-         this.label1.AutoSize = true;
-         this.label1.Font = new System.Drawing.Font("Kristen ITC", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-         this.label1.ForeColor = System.Drawing.Color.White;
-         this.label1.Location = new System.Drawing.Point(3, 2);
-         this.label1.Name = "label1";
-         this.label1.Size = new System.Drawing.Size(149, 22);
-         this.label1.TabIndex = 1;
-         this.label1.Text = "Gestion des Stages";
-         this.label1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Form1_MouseDown);
-         this.label1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Form1_MouseMove);
-         this.label1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Form1_MouseUp);
-         // 
-         // FB_Quit
-         // 
-         this.FB_Quit.BackColor = System.Drawing.Color.Yellow;
-         this.FB_Quit.BackgroundImage = global::GestionDeStage.Properties.Resources.CloseNormal;
-         this.FB_Quit.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-         this.FB_Quit.ImageClick = global::GestionDeStage.Properties.Resources.CloseClick;
-         this.FB_Quit.ImageDisable = global::GestionDeStage.Properties.Resources.CloseDisable;
-         this.FB_Quit.ImageNeutral = global::GestionDeStage.Properties.Resources.CloseNormal;
-         this.FB_Quit.ImageOver = global::GestionDeStage.Properties.Resources.CloseHover;
-         this.FB_Quit.Location = new System.Drawing.Point(301, 2);
-         this.FB_Quit.Margin = new System.Windows.Forms.Padding(4);
-         this.FB_Quit.Name = "FB_Quit";
-         this.FB_Quit.Size = new System.Drawing.Size(20, 20);
-         this.FB_Quit.TabIndex = 0;
-         this.FB_Quit.Click += new System.EventHandler(this.FB_Quit_Click);
-         // 
-         // LB_TitreDescription
-         // 
-         this.LB_TitreDescription.Font = new System.Drawing.Font("Kristen ITC", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-         this.LB_TitreDescription.Location = new System.Drawing.Point(14, 103);
-         this.LB_TitreDescription.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-         this.LB_TitreDescription.Name = "LB_TitreDescription";
-         this.LB_TitreDescription.Size = new System.Drawing.Size(270, 20);
-         this.LB_TitreDescription.TabIndex = 5;
-         this.LB_TitreDescription.Text = "Description de stage";
-         this.LB_TitreDescription.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-         // 
-         // LB_TitreType
-         // 
-         this.LB_TitreType.Font = new System.Drawing.Font("Kristen ITC", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-         this.LB_TitreType.Location = new System.Drawing.Point(14, 164);
-         this.LB_TitreType.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-         this.LB_TitreType.Name = "LB_TitreType";
-         this.LB_TitreType.Size = new System.Drawing.Size(270, 20);
-         this.LB_TitreType.TabIndex = 6;
-         this.LB_TitreType.Text = "Type de stage";
-         this.LB_TitreType.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-         // 
-         // LB_TitreNumStage
-         // 
-         this.LB_TitreNumStage.Font = new System.Drawing.Font("Kristen ITC", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-         this.LB_TitreNumStage.Location = new System.Drawing.Point(14, 68);
-         this.LB_TitreNumStage.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-         this.LB_TitreNumStage.Name = "LB_TitreNumStage";
-         this.LB_TitreNumStage.Size = new System.Drawing.Size(270, 20);
-         this.LB_TitreNumStage.TabIndex = 8;
-         this.LB_TitreNumStage.Text = "Numero de stage";
-         this.LB_TitreNumStage.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-         // 
-         // LB_NumStage
-         // 
-         this.LB_NumStage.Font = new System.Drawing.Font("Kristen ITC", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-         this.LB_NumStage.Location = new System.Drawing.Point(14, 82);
-         this.LB_NumStage.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-         this.LB_NumStage.Name = "LB_NumStage";
-         this.LB_NumStage.Size = new System.Drawing.Size(270, 20);
-         this.LB_NumStage.TabIndex = 7;
-         this.LB_NumStage.TextAlign = System.Drawing.ContentAlignment.TopCenter;
          // 
          // FormPrincipale
          // 

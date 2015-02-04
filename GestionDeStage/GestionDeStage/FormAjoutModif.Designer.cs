@@ -47,6 +47,7 @@
          // panel1
          // 
          this.panel1.BackColor = System.Drawing.Color.LightGreen;
+         this.panel1.Controls.Add(this.CB_Entreprise);
          this.panel1.Controls.Add(this.label1);
          this.panel1.Controls.Add(this.label3);
          this.panel1.Controls.Add(this.LB_TitreDescription);
@@ -55,7 +56,6 @@
          this.panel1.Controls.Add(this.RB_Industriel);
          this.panel1.Controls.Add(this.FB_Annuler);
          this.panel1.Controls.Add(this.FB_Appliquer);
-         this.panel1.Controls.Add(this.CB_Entreprise);
          this.panel1.Controls.Add(this.TB_Description);
          this.panel1.Location = new System.Drawing.Point(2, 24);
          this.panel1.Name = "panel1";
@@ -125,6 +125,7 @@
          this.FB_Appliquer.Name = "FB_Appliquer";
          this.FB_Appliquer.Size = new System.Drawing.Size(96, 20);
          this.FB_Appliquer.TabIndex = 6;
+         this.FB_Appliquer.Click += new System.EventHandler(this.FB_Appliquer_Click);
          // 
          // CB_Entreprise
          // 
@@ -135,6 +136,7 @@
          this.CB_Entreprise.Name = "CB_Entreprise";
          this.CB_Entreprise.Size = new System.Drawing.Size(185, 25);
          this.CB_Entreprise.TabIndex = 5;
+         this.CB_Entreprise.SelectedIndexChanged += new System.EventHandler(this.CB_Entreprise_SelectedIndexChanged);
          // 
          // TB_Description
          // 
