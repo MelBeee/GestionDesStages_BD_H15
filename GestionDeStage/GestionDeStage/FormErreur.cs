@@ -9,6 +9,15 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Oracle.DataAccess.Client;
 
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//      FORM ERREUR
+//      Fait par Melissa Boucher
+//      4 Fevrier 2015
+//      Produit pour le cours de Base de Données
+//
+//      Utilisé pour afficher les exceptions dans l'execution du programme
+//      Description des exceptions : http://www.techonthenet.com/oracle/errors/
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 namespace GestionDeStage
 {
    public partial class FormErreur : Form
@@ -20,24 +29,33 @@ namespace GestionDeStage
       // emmagasine la position du curseur lors d'un deplacement de form
       private Point _start_point = new Point(0, 0);
 
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//      CONSTRUCTEUR
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
       public FormErreur(OracleException ExceptionAGerer)
       {
          InitializeComponent();
+         // Traite l'exception passé en construction lors de l'appel d'un autre form
          ExceptionATraiter = ExceptionAGerer;
       }
 
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//      FORM LOAD
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
       private void FormErreur_Load(object sender, EventArgs e)
       {
          // appel de la fonction qui va traiter l'exception
          SwitchException(ExceptionATraiter);
       }
 
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//      DEPLACEMENT DU FORM
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
       private void FormErreur_MouseDown(object sender, MouseEventArgs e)
       {
          _dragging = true;  // Enregistre que l'utilisateur a selectionner la form
          _start_point = new Point(e.X, e.Y); // Enregistre le point actuelle du form 
       }
-
       private void FormErreur_MouseMove(object sender, MouseEventArgs e)
       {
          if (_dragging) // si l'utilisateur a selectionner le form
@@ -46,12 +64,15 @@ namespace GestionDeStage
              Location = new Point(p.X - this._start_point.X, p.Y - this._start_point.Y);
          }
       }
-
       private void FormErreur_MouseUp(object sender, MouseEventArgs e)
       {
           _dragging = false; // Enregistre que l'utilisateur a "lacher le form"
       }
 
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//      SWITCH EXCEPTION    
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+      // Traite l'exception lancé
       private void SwitchException(OracleException ex)
       {
          string DescriptionErreur;
@@ -138,6 +159,10 @@ namespace GestionDeStage
          LB_Text.Text += " " + ex.Number.ToString();
          LB_Description.Text = DescriptionErreur;
       }
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//      EVENTS DE FLASHBUTTON
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
       private void FB_Continuer_Click(object sender, EventArgs e)
       {
          this.DialogResult = DialogResult.OK;
@@ -146,7 +171,6 @@ namespace GestionDeStage
       {
          this.DialogResult = DialogResult.Cancel;
       }
-
       private void FB_Quit_Click(object sender, EventArgs e)
       {
           this.Close();

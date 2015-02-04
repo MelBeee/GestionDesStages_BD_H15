@@ -29,18 +29,18 @@
       private void InitializeComponent()
       {
          this.panel1 = new System.Windows.Forms.Panel();
+         this.CB_Entreprise = new System.Windows.Forms.ComboBox();
+         this.label1 = new System.Windows.Forms.Label();
+         this.label3 = new System.Windows.Forms.Label();
+         this.LB_TitreDescription = new System.Windows.Forms.Label();
          this.LB_NomEnt = new System.Windows.Forms.Label();
          this.RB_Gestion = new System.Windows.Forms.RadioButton();
          this.RB_Industriel = new System.Windows.Forms.RadioButton();
          this.FB_Annuler = new FlashButton.FlashButton();
          this.FB_Appliquer = new FlashButton.FlashButton();
-         this.CB_Entreprise = new System.Windows.Forms.ComboBox();
          this.TB_Description = new System.Windows.Forms.TextBox();
          this.LB_AjoutModif = new System.Windows.Forms.Label();
          this.FB_Quit = new FlashButton.FlashButton();
-         this.LB_TitreDescription = new System.Windows.Forms.Label();
-         this.label3 = new System.Windows.Forms.Label();
-         this.label1 = new System.Windows.Forms.Label();
          this.panel1.SuspendLayout();
          this.SuspendLayout();
          // 
@@ -61,6 +61,50 @@
          this.panel1.Name = "panel1";
          this.panel1.Size = new System.Drawing.Size(286, 238);
          this.panel1.TabIndex = 2;
+         // 
+         // CB_Entreprise
+         // 
+         this.CB_Entreprise.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+         this.CB_Entreprise.Font = new System.Drawing.Font("Kristen ITC", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+         this.CB_Entreprise.FormattingEnabled = true;
+         this.CB_Entreprise.Location = new System.Drawing.Point(51, 167);
+         this.CB_Entreprise.Name = "CB_Entreprise";
+         this.CB_Entreprise.Size = new System.Drawing.Size(185, 25);
+         this.CB_Entreprise.TabIndex = 5;
+         this.CB_Entreprise.SelectedIndexChanged += new System.EventHandler(this.CB_Entreprise_SelectedIndexChanged);
+         // 
+         // label1
+         // 
+         this.label1.Font = new System.Drawing.Font("Kristen ITC", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+         this.label1.Location = new System.Drawing.Point(10, 149);
+         this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+         this.label1.Name = "label1";
+         this.label1.Size = new System.Drawing.Size(267, 18);
+         this.label1.TabIndex = 13;
+         this.label1.Text = "Entreprise ";
+         this.label1.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+         // 
+         // label3
+         // 
+         this.label3.Font = new System.Drawing.Font("Kristen ITC", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+         this.label3.Location = new System.Drawing.Point(10, 89);
+         this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+         this.label3.Name = "label3";
+         this.label3.Size = new System.Drawing.Size(267, 18);
+         this.label3.TabIndex = 12;
+         this.label3.Text = "Type de stage";
+         this.label3.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+         // 
+         // LB_TitreDescription
+         // 
+         this.LB_TitreDescription.Font = new System.Drawing.Font("Kristen ITC", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+         this.LB_TitreDescription.Location = new System.Drawing.Point(10, 7);
+         this.LB_TitreDescription.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+         this.LB_TitreDescription.Name = "LB_TitreDescription";
+         this.LB_TitreDescription.Size = new System.Drawing.Size(267, 18);
+         this.LB_TitreDescription.TabIndex = 11;
+         this.LB_TitreDescription.Text = "Description de stage";
+         this.LB_TitreDescription.TextAlign = System.Drawing.ContentAlignment.TopCenter;
          // 
          // LB_NomEnt
          // 
@@ -84,6 +128,7 @@
          this.RB_Gestion.TabStop = true;
          this.RB_Gestion.Text = "Informatique de Gestion";
          this.RB_Gestion.UseVisualStyleBackColor = true;
+         this.RB_Gestion.CheckedChanged += new System.EventHandler(this.RB_Gestion_CheckedChanged);
          // 
          // RB_Industriel
          // 
@@ -96,6 +141,7 @@
          this.RB_Industriel.TabStop = true;
          this.RB_Industriel.Text = "Informatique Industrielle";
          this.RB_Industriel.UseVisualStyleBackColor = true;
+         this.RB_Industriel.CheckedChanged += new System.EventHandler(this.RB_Industriel_CheckedChanged);
          // 
          // FB_Annuler
          // 
@@ -106,7 +152,7 @@
          this.FB_Annuler.ImageNeutral = global::GestionDeStage.Properties.Resources.AnnulerNormal;
          this.FB_Annuler.ImageOver = global::GestionDeStage.Properties.Resources.AnnulerHover;
          this.FB_Annuler.Location = new System.Drawing.Point(146, 202);
-         this.FB_Annuler.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+         this.FB_Annuler.Margin = new System.Windows.Forms.Padding(4);
          this.FB_Annuler.Name = "FB_Annuler";
          this.FB_Annuler.Size = new System.Drawing.Size(99, 20);
          this.FB_Annuler.TabIndex = 7;
@@ -121,21 +167,11 @@
          this.FB_Appliquer.ImageNeutral = global::GestionDeStage.Properties.Resources.AppliquerNormal;
          this.FB_Appliquer.ImageOver = global::GestionDeStage.Properties.Resources.AppliquerHover;
          this.FB_Appliquer.Location = new System.Drawing.Point(44, 202);
-         this.FB_Appliquer.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+         this.FB_Appliquer.Margin = new System.Windows.Forms.Padding(4);
          this.FB_Appliquer.Name = "FB_Appliquer";
          this.FB_Appliquer.Size = new System.Drawing.Size(96, 20);
          this.FB_Appliquer.TabIndex = 6;
          this.FB_Appliquer.Click += new System.EventHandler(this.FB_Appliquer_Click);
-         // 
-         // CB_Entreprise
-         // 
-         this.CB_Entreprise.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-         this.CB_Entreprise.Font = new System.Drawing.Font("Kristen ITC", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-         this.CB_Entreprise.FormattingEnabled = true;
-         this.CB_Entreprise.Location = new System.Drawing.Point(51, 167);
-         this.CB_Entreprise.Name = "CB_Entreprise";
-         this.CB_Entreprise.Size = new System.Drawing.Size(185, 25);
-         this.CB_Entreprise.TabIndex = 5;
          // 
          // TB_Description
          // 
@@ -146,6 +182,7 @@
          this.TB_Description.Name = "TB_Description";
          this.TB_Description.Size = new System.Drawing.Size(267, 55);
          this.TB_Description.TabIndex = 3;
+         this.TB_Description.TextChanged += new System.EventHandler(this.TB_Description_TextChanged);
          // 
          // LB_AjoutModif
          // 
@@ -171,44 +208,11 @@
          this.FB_Quit.ImageNeutral = global::GestionDeStage.Properties.Resources.CloseNormal;
          this.FB_Quit.ImageOver = global::GestionDeStage.Properties.Resources.CloseHover;
          this.FB_Quit.Location = new System.Drawing.Point(268, 2);
-         this.FB_Quit.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+         this.FB_Quit.Margin = new System.Windows.Forms.Padding(4);
          this.FB_Quit.Name = "FB_Quit";
          this.FB_Quit.Size = new System.Drawing.Size(20, 20);
          this.FB_Quit.TabIndex = 1;
          this.FB_Quit.Click += new System.EventHandler(this.FB_Quit_Click);
-         // 
-         // LB_TitreDescription
-         // 
-         this.LB_TitreDescription.Font = new System.Drawing.Font("Kristen ITC", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-         this.LB_TitreDescription.Location = new System.Drawing.Point(10, 7);
-         this.LB_TitreDescription.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-         this.LB_TitreDescription.Name = "LB_TitreDescription";
-         this.LB_TitreDescription.Size = new System.Drawing.Size(267, 18);
-         this.LB_TitreDescription.TabIndex = 11;
-         this.LB_TitreDescription.Text = "Description de stage";
-         this.LB_TitreDescription.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-         // 
-         // label3
-         // 
-         this.label3.Font = new System.Drawing.Font("Kristen ITC", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-         this.label3.Location = new System.Drawing.Point(10, 89);
-         this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-         this.label3.Name = "label3";
-         this.label3.Size = new System.Drawing.Size(267, 18);
-         this.label3.TabIndex = 12;
-         this.label3.Text = "Type de stage";
-         this.label3.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-         // 
-         // label1
-         // 
-         this.label1.Font = new System.Drawing.Font("Kristen ITC", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-         this.label1.Location = new System.Drawing.Point(10, 149);
-         this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-         this.label1.Name = "label1";
-         this.label1.Size = new System.Drawing.Size(267, 18);
-         this.label1.TabIndex = 13;
-         this.label1.Text = "Entreprise ";
-         this.label1.TextAlign = System.Drawing.ContentAlignment.TopCenter;
          // 
          // FormAjoutModif
          // 

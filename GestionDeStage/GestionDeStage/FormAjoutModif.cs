@@ -8,7 +8,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Oracle.DataAccess.Client;
-//  commenter
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//      FORM Ajout/Modifier
+//      Fait par Melissa Boucher
+//      4 Fevrier 2015
+//      Produit pour le cours de Base de Données
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 namespace GestionDeStage
 {
    public partial class FormAjoutModif : Form
@@ -17,10 +23,16 @@ namespace GestionDeStage
       private bool _dragging = false;
       // emmagasine la position du curseur lors d'un deplacement de form
       private Point _start_point = new Point(0, 0);
+      // emmagasine un string permettant de savoir si on ajoute ou modifie un stage
       string AjouterModifier;
+      // connection au serveur 
       OracleConnection oraconn_AM = new OracleConnection();
+      // emmagasine le numero de stage si on modifie un stage
       int NumStagePK;
 
+      //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+      //      CONSTRUCTEUR
+      //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
       public FormAjoutModif(string AjoutModif, OracleConnection oraconn, int NumStage)
       {
          oraconn_AM = oraconn;
@@ -29,17 +41,64 @@ namespace GestionDeStage
          InitializeComponent();
       }
 
+      //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+      //      FORM LOAD
+      //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+      private void FormAjoutModif_Load(object sender, EventArgs e)
+      {
+
+         LB_AjoutModif.Text = AjouterModifier;
+         if (AjouterModifier == "Modifier")
+         {
+            FB_Appliquer.Enabled = true;
+            LB_NomEnt.Enabled = true;
+            LB_NomEnt.Visible = true;
+            CB_Entreprise.Enabled = false;
+            CB_Entreprise.Visible = false;
+            LoadInformation();
+         }
+         else
+         {
+            FB_Appliquer.Enabled = false;
+            LB_NomEnt.Enabled = false;
+            LB_NomEnt.Visible = false;
+            CB_Entreprise.Enabled = true;
+            CB_Entreprise.Visible = true;
+            RemplirInformation();
+         }
+      }
+
+      //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+      //      EVENTS DE FLASHBUTTON
+      //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
       private void FB_Quit_Click(object sender, EventArgs e)
       {
          this.Close();
       }
-
       private void flashButton2_Click(object sender, EventArgs e)
       {
          this.Close();
       }
+      private void TB_Description_TextChanged(object sender, EventArgs e)
+      {
+         UpdateControl();
+      }
+      private void RB_Industriel_CheckedChanged(object sender, EventArgs e)
+      {
+         UpdateControl();
+      }
+      private void RB_Gestion_CheckedChanged(object sender, EventArgs e)
+      {
+         UpdateControl();
+      }
+      private void CB_Entreprise_SelectedIndexChanged(object sender, EventArgs e)
+      {
+         UpdateControl();
+      }
 
-      // Deplacement des forms
+      //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+      //      DEPLACEMENT DU FORM
+      //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
       private void AjoutModifStage_MouseDown(object sender, MouseEventArgs e)
       {
          _dragging = true;  // Enregistre que l'utilisateur a selectionner la form
@@ -57,38 +116,29 @@ namespace GestionDeStage
             Location = new Point(p.X - this._start_point.X, p.Y - this._start_point.Y);
          }
       }
-
-      private void Erreur(OracleException exception)
+      private void UpdateControl()
       {
-         FormErreur Erreur = new FormErreur(exception);
+         if (AjouterModifier == "Ajouter")
+            FB_Appliquer.Enabled = (TB_Description.Text != "" && (RB_Gestion.Checked || RB_Industriel.Checked) && CB_Entreprise.SelectedIndex != -1);
+         else
+            FB_Appliquer.Enabled = (TB_Description.Text != "" && (RB_Gestion.Checked || RB_Industriel.Checked));
+      }
+      private void FB_Appliquer_Click(object sender, EventArgs e)
+      {
+         bool reussi = true;
 
-         if (Erreur.ShowDialog() == DialogResult.Cancel)
+         if (AjouterModifier == "Ajouter")
+            reussi = Ajout();
+         else
+            reussi = Modifier();
+
+         if (reussi)
             this.Close();
       }
 
-      private void FormAjoutModif_Load(object sender, EventArgs e)
-      {
-         LB_AjoutModif.Text = AjouterModifier;
-         if (AjouterModifier == "Modifier")
-         {
-            FB_Appliquer.Enabled = true;
-            LB_NomEnt.Enabled = true;
-            LB_NomEnt.Visible = true;
-            CB_Entreprise.Enabled = false;
-            CB_Entreprise.Visible = false;
-            LoadInformation();
-         }
-         else
-         {
-            FB_Appliquer.Enabled = true;
-            LB_NomEnt.Enabled = false;
-            LB_NomEnt.Visible = false;
-            CB_Entreprise.Enabled = true;
-            CB_Entreprise.Visible = true;
-            RemplirInformation();
-         }
-      }
-
+      //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+      //      MODIFIER
+      //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
       private void RemplirInformation()
       {
          string commandesql = "select nom from entreprise";
@@ -112,7 +162,6 @@ namespace GestionDeStage
 
          }
       }
-
       private void LoadInformation()
       {
          string commandesql = "select s.description, s.typestage, e.nom from stage s " +
@@ -145,64 +194,6 @@ namespace GestionDeStage
             Erreur(ex);
          }
       }
-
-      private bool Ajout()
-      {
-         bool reussi = true;
-         string commande = "insert into stage (description, typestage, nument) values " +
-                          "(:Description, :TypeStage, (select nument from entreprise where nom = '" + CB_Entreprise.SelectedItem.ToString() + "'))";
-         try
-         {
-            // on affecte les valeurs aux paramètres.
-            OracleParameter oradescription = new OracleParameter(":Description", OracleDbType.Varchar2, 100);
-            OracleParameter oratype = new OracleParameter(":TypeStage", OracleDbType.Varchar2, 3);
-
-            OracleCommand oraModif = new OracleCommand(commande, oraconn_AM);
-            oraModif.CommandType = CommandType.Text;
-
-            oradescription.Value = TB_Description.Text;
-            if (RB_Gestion.Checked)
-               oratype.Value = "ges";
-            else
-               oratype.Value = "ind";
-            // En utilisant la propriété Paramètres de OracleCommand, on spécifie les paramètres de la requête SQL.
-            oraModif.Parameters.Add(oradescription);
-            oraModif.Parameters.Add(oratype);
-
-            // on exécute la requête
-            oraModif.ExecuteNonQuery();
-            // on appelle la fonction dissocier pour pouvoir insérer une deuxième fois.
-            MessageBox.Show("Application reussite");
-         }
-         catch (OracleException ex)
-         {
-            Erreur(ex);
-            reussi = false;
-         }
-         return reussi;
-      }
-
-      //private bool Modifier()
-      //{
-      //   bool reussi = true;
-
-      //   try
-      //   {
-      //      string commande = " update stage set description = '" + TB_Description.Text + "', typestage = 'ind' where numstage = " + NumStagePK;
-      //      OracleCommand oraclecomm = new OracleCommand(commande, oraconn_AM);
-      //      oraclecomm.CommandType = CommandType.Text;
-      //      oraclecomm.ExecuteNonQuery();
-
-      //      MessageBox.Show("Reussi");
-      //   }
-      //   catch (OracleException ex)
-      //   {
-      //      Erreur(ex);
-      //      reussi = false; 
-      //   }
-      //   return reussi; 
-      //}
-
       private bool Modifier()
       {
          bool reussi = true;
@@ -243,31 +234,55 @@ namespace GestionDeStage
          return reussi;
       }
 
-      private bool ChampsRempli()
-      {
-         return (TB_Description.Text == "") ||
-                (!RB_Gestion.Checked && !RB_Industriel.Checked) ||
-                (CB_Entreprise.SelectedIndex < 0);
-      }
-
-      private void FB_Appliquer_Click(object sender, EventArgs e)
+      //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+      //      AJOUTER
+      //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+      private bool Ajout()
       {
          bool reussi = true;
-         if (AjouterModifier == "Ajouter")
+         string commande = "insert into stage (description, typestage, nument) values " +
+                          "(:Description, :TypeStage, (select nument from entreprise where nom = '" + CB_Entreprise.SelectedItem.ToString() + "'))";
+         try
          {
-            reussi = Ajout();
-         }
-         else
-         {
-            reussi = Modifier();
-         }
+            // on affecte les valeurs aux paramètres.
+            OracleParameter oradescription = new OracleParameter(":Description", OracleDbType.Varchar2, 100);
+            OracleParameter oratype = new OracleParameter(":TypeStage", OracleDbType.Varchar2, 3);
 
-         if (reussi)
-         {
-            this.Close();
-         }
+            OracleCommand oraModif = new OracleCommand(commande, oraconn_AM);
+            oraModif.CommandType = CommandType.Text;
 
+            oradescription.Value = TB_Description.Text;
+            if (RB_Gestion.Checked)
+               oratype.Value = "ges";
+            else
+               oratype.Value = "ind";
+            // En utilisant la propriété Paramètres de OracleCommand, on spécifie les paramètres de la requête SQL.
+            oraModif.Parameters.Add(oradescription);
+            oraModif.Parameters.Add(oratype);
+
+            // on exécute la requête
+            oraModif.ExecuteNonQuery();
+            // on appelle la fonction dissocier pour pouvoir insérer une deuxième fois.
+            MessageBox.Show("Application reussite");
+         }
+         catch (OracleException ex)
+         {
+            Erreur(ex);
+            reussi = false;
+         }
+         return reussi;
       }
 
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//      GESTION DES ERREURS
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+      private void Erreur(OracleException exception)
+      {
+         FormErreur Erreur = new FormErreur(exception);
+
+         if (Erreur.ShowDialog() == DialogResult.Cancel)
+            this.Close();
+      }
    }
 }
+
